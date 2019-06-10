@@ -145,6 +145,7 @@
 		<a href="admin/ajouter_competences.php"><p>Ajouter compétence gauche</p></a>
 		<a href="admin/ajouter_parcour.php"><p>Ajouter Parcours</p></a>
 		<a href="admin/ajouter_parcours.php"><p>Ajouter Expériences</p></a>
+		<a href="image.php"><p>Ajouter image</p></a>
 		<?php endif ?>
 		<footer>
 			<p>Copyright 2019 Calvin Sea Phanh - Toute reproduction interdite</p>
