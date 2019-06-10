@@ -43,7 +43,7 @@
 				<div class="leftexp">
 					<?php
 					echo'
-					<a href="'.$projet['adresse'].'"><img src="images/'.$projet['upload'].'.jpg" alt="'.$projet['alt'].'"></a>
+					<a href="'.$projet['adresse'].'" target="_blank"><img src="images/'.$projet['upload'].'.jpg" alt="'.$projet['alt'].'"></a>
 					';
 					?>
 				</div>

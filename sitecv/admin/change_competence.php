@@ -12,7 +12,7 @@
 			require_once '../database.php';
             require_once '../function.php';
 
-            $hobbie = getObjet($db, 1, $_GET['id']);
+            $competence = getObjet7($db, 1, $_GET['id']);
 
             if (!isset($_GET['id'])) {
             	header('location:../index.php');
@@ -22,14 +22,11 @@
             }
 
             if(isset($_POST) && !empty($_POST)) {
-            	if (!empty($_POST['name']) && !empty($_POST['content']) && !empty($_POST['upload']) && !empty($_POST['alt']) && !empty($_POST['couleur'])) {
-            		$req = $db->prepare('UPDATE hobbie SET name = :name, content = :content, upload = :upload, alt = :alt, couleur = :couleur WHERE id = :id');
+            	if (!empty($_POST['name']) && !empty($_POST['niveaux'])) {
+            		$req = $db->prepare('UPDATE competences SET name = :name, niveaux = :niveaux WHERE id = :id');
             		$req->execute([
             			'name' => $_POST['name'],
-            			'content' => $_POST['content'],
-            			'upload' => $_POST['upload'],
-            			'alt' => $_POST['alt'],
-            			'couleur' => $_POST['couleur'],
+            			'niveaux' => $_POST['niveaux'],
             			'id' => $_GET['id'],
             		]);
             		$_SESSION['flash']['success'] = 'Hobbie changé';
@@ -59,19 +56,13 @@
 				</ul>
 			</div>
 		</nav>
-		<h2> Modifier hobbie</h2>
+		<h2> Modifier competence</h2>
 
 		<form method="POST">
 			<h4> Nom: </h4>
-			<input type="text" name="name" value="<?= $hobbie->name ?>"/>
+			<input type="text" name="name" value="<?= $competence->name ?>"/>
 			<h4> Contenu </h4>
-			<input type="text" name="content" value="<?= $hobbie->content ?>" />
-			<h4> Changement d'image </h4>
-			<input type="text" name="upload" value="<?= $hobbie->upload ?>"/>
-			<h4> Alt </h4>
-			<input type="text" name="alt" value="<?= $hobbie->alt ?>"/>
-			<h4> Couleur </h4>
-			<input type="text" name="couleur" value="<?= $hobbie->couleur ?>"/>
+			<input type="text" name="niveaux" value="<?= $competence->niveaux ?>" />
 			<button>Modifier</button>
 		</form>
 		<footer>

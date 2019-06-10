@@ -12,25 +12,17 @@
 			require_once '../database.php';
             require_once '../function.php';
 
-            $hobbie = getObjet($db, 1, $_GET['id']);
-
-            if (!isset($_GET['id'])) {
-            	header('location:../index.php');
-            }
             if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) {
             	header('location:../index.php');
             }
 
             if(isset($_POST) && !empty($_POST)) {
-            	if (!empty($_POST['name']) && !empty($_POST['content']) && !empty($_POST['upload']) && !empty($_POST['alt']) && !empty($_POST['couleur'])) {
-            		$req = $db->prepare('UPDATE hobbie SET name = :name, content = :content, upload = :upload, alt = :alt, couleur = :couleur WHERE id = :id');
+            	if (true) {
+            		$req = $db->prepare('INSERT INTO competences (id, name, niveaux) VALUES (:id, :name, :niveaux)');
             		$req->execute([
+            			'id' => $_POST['id'],
             			'name' => $_POST['name'],
-            			'content' => $_POST['content'],
-            			'upload' => $_POST['upload'],
-            			'alt' => $_POST['alt'],
-            			'couleur' => $_POST['couleur'],
-            			'id' => $_GET['id'],
+            			'niveaux' => $_POST['niveaux'],
             		]);
             		$_SESSION['flash']['success'] = 'Hobbie changé';
             		header('location:../index.php');
@@ -59,20 +51,15 @@
 				</ul>
 			</div>
 		</nav>
-		<h2> Modifier hobbie</h2>
-
+		<h2> Ajouter Competence</h2>
 		<form method="POST">
+			<h4> ID: </h4>
+			<input type="text" name="id"/>
 			<h4> Nom: </h4>
-			<input type="text" name="name" value="<?= $hobbie->name ?>"/>
+			<input type="text" name="name"/>
 			<h4> Contenu </h4>
-			<input type="text" name="content" value="<?= $hobbie->content ?>" />
-			<h4> Changement d'image </h4>
-			<input type="text" name="upload" value="<?= $hobbie->upload ?>"/>
-			<h4> Alt </h4>
-			<input type="text" name="alt" value="<?= $hobbie->alt ?>"/>
-			<h4> Couleur </h4>
-			<input type="text" name="couleur" value="<?= $hobbie->couleur ?>"/>
-			<button>Modifier</button>
+			<input type="text" name="niveaux"/>
+			<button>Ajouter</button>
 		</form>
 		<footer>
 			<p>Copyright 2019 Calvin Sea Phanh - Toute reproduction interdite</p>
