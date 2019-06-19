@@ -24,7 +24,12 @@
 					</li>
 					<li class="menu-con">
 						<a href="contact.php">Contactez-moi !</a>
+					</li><?php if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])): ?>
+					<li class="menu-dc">
+						<a href="deco.php">Deconnexion</a>
 					</li>
+				<?php endif ?>
+					
 				</ul>
 			</div>
 		</nav>

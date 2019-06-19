@@ -30,6 +30,11 @@
 					<li class="menu-con">
 						<a href="contact.php">Contactez-moi !</a>
 					</li>
+					<?php if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])): ?>
+					<li class="menu-dc">
+						<a href="deco.php">Deconnexion</a>
+					</li>
+				<?php endif ?>
 				</ul>
 			</div>
 		</nav>
@@ -41,17 +46,17 @@
 			<section class="presentation">
 				<div class="sec">
 					<h2 class="titre"><?= $qui['name'] ?></h2>
-					<div class="left">
+					<div class="leftexp">
 						<?php
 						echo'
 						<img src="images/'.$qui['upload'].'.jpg" alt="identité" />
 						';
 						?>
 					</div>
-					<div class="right">
+					<div class="rightexp">
 						<p><?= $qui['content'] ?></p>
 						<?php if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])): ?>
-					<a href="admin/change6.php?id=<?= $qui['id'] ?>">Modifier</a>
+					<a href="admin/change/change6.php?id=<?= $qui['id'] ?>">Modifier</a>
 					<?php endif ?>
 					</div>
 				</div>
@@ -73,7 +78,7 @@
 							<h4><?= $parcours_et_expériences['metier'] ?></h4>
 							<p><?= $parcours_et_expériences['content'] ?></p>
 							<?php if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])): ?>
-					<a href="admin/change7.php?id=<?= $parcours_et_expériences['id'] ?>">Modifier</a>
+					<a href="admin/change/change7.php?id=<?= $parcours_et_expériences['id'] ?>">Modifier</a>
 					<?php endif ?>
 						</div>
 					</div>
@@ -91,7 +96,7 @@
 							<h4><?= $parcours['metier'] ?></h4>
 							<p><?= $parcours['content'] ?></p>
 							<?php if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])): ?>
-					<a href="admin/change5.php?id=<?= $parcours['id'] ?>">Modifier</a>
+					<a href="admin/change/change5.php?id=<?= $parcours['id'] ?>">Modifier</a>
 					<?php endif ?>
 						</div>
 					</div>
@@ -114,7 +119,7 @@
 							<div class="sousleft"><p><?= $competences_et_niveau['competences'] ?></p></div>
 							<div class="sousright"><p><?= $competences_et_niveau['niveaux'] ?></p></div>
 							<?php if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])): ?>
-					<a href="admin/change4.php?id=<?= $competences_et_niveau['id'] ?>">Modifier</a>
+					<a href="admin/change/change4.php?id=<?= $competences_et_niveau['id'] ?>">Modifier</a>
 					<?php endif ?>
 						</div>
 				<?php endforeach?>
@@ -132,7 +137,7 @@
 							<div class="sousleft"><p><?= $competences['name'] ?></p></div>
 							<div class="sousright"><p><?= $competences['niveaux'] ?></p></div>
 							<?php if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])): ?>
-					<a href="admin/change3.php?id=<?= $competences['id'] ?>">Modifier</a>
+					<a href="admin/change/change3.php?id=<?= $competences['id'] ?>">Modifier</a>
 					<?php endif ?>
 						</div>
 				<?php endforeach?>
@@ -141,10 +146,10 @@
 			</section>
 		</article>
 		<?php if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])): ?>
-		<a href="admin/ajouter_competence.php"><p>Ajouter compétence droite</p></a>
-		<a href="admin/ajouter_competences.php"><p>Ajouter compétence gauche</p></a>
-		<a href="admin/ajouter_parcour.php"><p>Ajouter Parcours</p></a>
-		<a href="admin/ajouter_parcours.php"><p>Ajouter Expériences</p></a>
+		<a href="admin/ajouter/ajouter_competence.php"><p>Ajouter compétence droite</p></a>
+		<a href="admin/ajouter/ajouter_competences.php"><p>Ajouter compétence gauche</p></a>
+		<a href="admin/ajouter/ajouter_parcour.php"><p>Ajouter Parcours</p></a>
+		<a href="admin/ajouter/ajouter_parcours.php"><p>Ajouter Expériences</p></a>
 		<a href="image.php"><p>Ajouter image</p></a>
 		<?php endif ?>
 		<footer>

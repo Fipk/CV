@@ -29,6 +29,11 @@
 					<li class="menu-con">
 						<a href="contact.php">Contactez-moi !</a>
 					</li>
+					<?php if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])): ?>
+					<li class="menu-dc">
+						<a href="deco.php">Deconnexion</a>
+					</li>
+				<?php endif ?>
 				</ul>
 			</div>
 		</nav>
@@ -50,14 +55,14 @@
 				<div class="rightexp">
 					<p><?= $projet['content'] ?></p>
 					<?php if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])): ?>
-					<a href="admin/change2.php?id=<?= $projet['id'] ?>">Modifier</a>
+					<a href="admin/change/change2.php?id=<?= $projet['id'] ?>">Modifier</a>
 					<?php endif ?>
 				</div>
 			</div>
 		</section>
 		<?php endforeach ?>
 		<?php if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])): ?>
-		<a href="admin/ajouter_projets.php"><p>Ajouter</p></a>
+		<a href="admin/ajouter/ajouter_projets.php"><p>Ajouter des projets</p></a>
 		<?php endif ?>
 		<footer>
 			<p>Copyright 2019 Calvin Sea Phanh - Toute reproduction interdite</p>
